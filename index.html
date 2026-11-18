@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Class Timetable — Weekly Planner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <h1>📅 My Class Timetable</h1>
+    <p class="subtitle">Plan your university week — add your classes, see today at a glance, and never miss the next lecture.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- Today panel -->
+  <section class="card today-card">
+    <div class="today-head">
+      <div>
+        <h2 id="todayTitle">Today</h2>
+        <p class="muted" id="todayDate"></p>
+      </div>
+      <div class="today-stats">
+        <div class="stat"><span class="stat-num" id="statToday">0</span><span class="stat-label">classes today</span></div>
+        <div class="stat"><span class="stat-num" id="statWeek">0</span><span class="stat-label">classes this week</span></div>
+        <div class="stat"><span class="stat-num" id="statHours">0h</span><span class="stat-label">hours this week</span></div>
+      </div>
+    </div>
+    <div id="nextClass" class="next-class"></div>
+    <ul id="todayList" class="today-list"></ul>
+    <p class="muted small" id="todayEmpty" hidden>No classes scheduled for today. Enjoy the free day!</p>
+  </section>
+
+  <!-- Add class form -->
+  <section class="card">
+    <h2>Add a class</h2>
+    <form id="classForm" class="form-grid">
+      <label>Subject
+        <input type="text" id="subject" placeholder="e.g. Web Development" required maxlength="60">
+      </label>
+      <label>Day
+        <select id="day">
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
+      </label>
+      <label>Start time
+        <input type="time" id="startTime" value="09:00" required>
+      </label>
+      <label>End time
+        <input type="time" id="endTime" value="10:30" required>
+      </label>
+      <label>Room <span class="muted">(optional)</span>
+        <input type="text" id="room" placeholder="e.g. Room 4" maxlength="30">
+      </label>
+      <label>Teacher <span class="muted">(optional)</span>
+        <input type="text" id="teacher" placeholder="e.g. Miss Ayesha" maxlength="60">
+      </label>
+      <div class="form-actions">
+        <button type="submit" class="btn primary">+ Add class</button>
+        <button type="button" class="btn ghost" id="loadSample">Load sample timetable</button>
+        <button type="button" class="btn danger-ghost" id="clearAll">Clear all</button>
+      </div>
+      <p class="form-msg" id="formMsg" role="status"></p>
+    </form>
+  </section>
+
+  <!-- Weekly grid -->
+  <section class="card">
+    <div class="week-head">
+      <h2>This week</h2>
+      <p class="muted small">Sample classes are marked <span class="badge sample-badge">Sample</span> — replace them with your real timetable.</p>
+    </div>
+    <div class="week-grid" id="weekGrid"></div>
+  </section>
+
+  <!-- All classes list -->
+  <section class="card">
+    <h2>All classes</h2>
+    <ul id="allList" class="all-list"></ul>
+    <p class="muted small" id="allEmpty">No classes added yet. Add your first class above, or load the sample timetable to see how it works.</p>
+  </section>
+
+  <footer class="footer muted small">
+    Built with HTML, CSS and JavaScript. Your timetable is saved in your browser (localStorage) — nothing is uploaded anywhere.
+  </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
